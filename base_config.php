@@ -3,7 +3,8 @@
 $base_dir = __DIR__;
 
 // server protocol
-$protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
+//$protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
+$protocol = 'https';
 
 // domain name
 $domain = $_SERVER['SERVER_NAME'];
