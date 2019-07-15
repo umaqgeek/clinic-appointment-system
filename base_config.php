@@ -9,7 +9,8 @@ $protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
 $domain = $_SERVER['SERVER_NAME'];
 
 // base url
-$base_url = 'clinicAppointmentSystemSyera'; 
+//$base_url = 'clinicAppointmentSystemSyera'; 
+$base_url = ''; 
 $base_doc = preg_replace("!^${doc_root}!", '', $base_dir);
 
 // server port
