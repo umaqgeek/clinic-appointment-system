@@ -15,7 +15,8 @@ $base_url = '';
 $base_doc = preg_replace("!^${doc_root}!", '', $base_dir);
 
 // server port
-$port = $_SERVER['SERVER_PORT'];
+//$port = $_SERVER['SERVER_PORT'];
+$port = '';
 $disp_port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port";
 
 // put em all together to get the complete base URL
