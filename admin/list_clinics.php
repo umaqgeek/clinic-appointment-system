@@ -3,10 +3,7 @@ require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
 
-$sql = "SELECT * FROM clinics c "
-        . "LEFT JOIN clinics_users cu ON cu.clinic_id = c.c_id "
-        . "LEFT JOIN users u ON cu.user_id = u.u_id "
-        . "ORDER BY c.c_name ASC ";
+$sql = "SELECT * FROM clinics c ORDER BY c.c_name ASC ";
 $result = mysqli_query($conn, $sql);
 
 $num_rows = mysqli_num_rows($result);
@@ -36,7 +33,6 @@ $num_rows = mysqli_num_rows($result);
                         <tr>
                             <td><strong>NO.</strong></td>
                             <td><strong>NAME</strong></td>
-                            <td><strong>ADMIN</strong></td>
                             <td><strong>LOCATION</strong></td>
                             <td><strong>NOTES</strong></td>
                             <td><strong>ACTION</strong></td>
@@ -47,7 +43,6 @@ $num_rows = mysqli_num_rows($result);
                         <tr>
                             <td><?=$i ?>.</td>
                             <td><?=strtoupper($row['c_name']) ?></td>
-                            <td><?=strtoupper($row['u_fullname']) ?></td>
                             <td>
                                 <a href="https://www.google.com/maps/place/<?=$row['c_lat'] ?>,<?=$row['c_lon'] ?>" target="_blank">Open google maps</a>
                             </td>

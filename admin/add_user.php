@@ -2,6 +2,11 @@
 require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
+
+$sql = "SELECT * FROM clinics c ORDER BY c.c_name ASC";
+$result = mysqli_query($conn, $sql);
+
+$num_rows = mysqli_num_rows($result);
 ?>
 
 <div class="container" style="padding-top: 1%;">
@@ -11,7 +16,7 @@ require("user_validator.php");
                 
                 <?php require("nav_items.php"); ?>
                 
-                <h3>Add User</h3>
+                <h3>Add Clinic Admin</h3>
                 
                 <form action="add_user_process.php" method="POST">
                     <table class="table table-borderless">
@@ -37,13 +42,13 @@ require("user_validator.php");
                             </td>
                         </tr>
                         <tr>
-                            <td>Type</td>
+                            <td>Clinic</td>
                             <td>:</td>
                             <td>
-                                <select name="type" class="form-control">
-                                    <option value="patient">Patient</option>
-                                    <option value="clinic admin">Clinic Admin</option>
-                                    <option value="doctor">Doctor</option>
+                                <select name="cid" class="form-control">
+                                    <?php if (mysqli_num_rows($result) > 0) { for ($i = 1; $row = mysqli_fetch_assoc($result); $i++) { ?>
+                                    <option value="<?=$row['c_id'] ?>"><?=strtoupper($row['c_name']) ?></option>
+                                    <?php }} ?>
                                 </select>
                             </td>
                         </tr>

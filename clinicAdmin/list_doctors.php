@@ -2,6 +2,14 @@
 require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
+
+$cli_id = $_SESSION['user']['u_id'];
+
+$sql = "SELECT * FROM users u, clinics c, clinics_users cu "
+        . "WHERE u.u_id = cu.cu";
+$result = mysqli_query($conn, $sql);
+
+$num_rows = mysqli_num_rows($result);
 ?>
 
 <div class="container" style="padding-top: 1%;">

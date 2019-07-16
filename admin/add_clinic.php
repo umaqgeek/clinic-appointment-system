@@ -2,11 +2,6 @@
 require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
-
-$sql = "SELECT * FROM users u WHERE u.u_type = 'clinic admin'";
-$result = mysqli_query($conn, $sql);
-
-$num_rows = mysqli_num_rows($result);
 ?>
 
 <div class="container" style="padding-top: 1%;">
@@ -46,17 +41,6 @@ $num_rows = mysqli_num_rows($result);
                             <td>:</td>
                             <td>
                                 <input type="text" name="clon" class="form-control" placeholder="Type the clinic longitude here" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Clinic Admin</td>
-                            <td>:</td>
-                            <td>
-                                <select name="uid" class="form-control">
-                                    <?php if (mysqli_num_rows($result) > 0) { for ($i = 1; $row = mysqli_fetch_assoc($result); $i++) { ?>
-                                    <option value="<?=$row['u_id'] ?>"><?=strtoupper($row['u_fullname']) ?></option>
-                                    <?php }} ?>
-                                </select>
                             </td>
                         </tr>
                         <tr>

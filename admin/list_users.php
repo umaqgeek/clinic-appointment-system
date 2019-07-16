@@ -3,7 +3,11 @@ require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
 
-$sql = "SELECT * FROM users u WHERE u.u_type != 'administrator' ORDER BY u.u_approved ASC, u.u_type ASC, u.u_fullname ASC";
+$sql = "SELECT * FROM users u "
+        . "LEFT JOIN clinics_users cu ON cu.user_id = u.u_id "
+        . "LEFT JOIN clinics c ON c.c_id = cu.clinic_id "
+        . "WHERE u.u_type = 'clinic admin' "
+        . "ORDER BY u.u_approved ASC, c.c_name ASC, u.u_fullname ASC";
 $result = mysqli_query($conn, $sql);
 
 $num_rows = mysqli_num_rows($result);
@@ -16,9 +20,9 @@ $num_rows = mysqli_num_rows($result);
                 
                 <?php require("nav_items.php"); ?>
                 
-                <h3>List of Users</h3>
+                <h3>List of Clinic Admins</h3>
                 
-                <button type="button" class="btn btn-primary" onclick="window.location='add_user.php'">Add User</button>
+                <button type="button" class="btn btn-primary" onclick="window.location='add_user.php'">Add Clinic Admin</button>
                 <br />
                 <br />
                 <?php if (isset($_GET['error'])) { ?>
@@ -32,7 +36,7 @@ $num_rows = mysqli_num_rows($result);
                     <thead>
                         <tr>
                             <td><strong>NO.</strong></td>
-                            <td><strong>TYPE</strong></td>
+                            <td><strong>CLINIC</strong></td>
                             <td><strong>FULL NAME</strong></td>
                             <td><strong>USERNAME</strong></td>
                             <td><strong>STATUS</strong></td>
@@ -43,7 +47,7 @@ $num_rows = mysqli_num_rows($result);
                         <?php if (mysqli_num_rows($result) > 0) { for ($i = 1; $row = mysqli_fetch_assoc($result); $i++) { ?>
                         <tr>
                             <td><?=$i ?>.</td>
-                            <td><?=strtoupper($row['u_type']) ?></td>
+                            <td><?=strtoupper($row['c_name']) ?></td>
                             <td><?=strtoupper($row['u_fullname']) ?></td>
                             <td><?=strtoupper($row['u_username']) ?></td>
                             <td><?=($row['u_approved']=="1")?("<span style='color: green;'>APPROVED</span>"):("<span style='color: red;'>PENDING</span>") ?></td>
@@ -53,6 +57,9 @@ $num_rows = mysqli_num_rows($result);
                                     <button type="button" class="btn btn-success">Approve</button>
                                 </a>
                                 <?php } ?>
+                                <a href="remove_user_process.php?id=<?=$row['u_id'] ?>">
+                                    <button type="button" class="btn btn-danger">X</button>
+                                </a>
                             </td>
                         </tr>
                         <?php }} else { ?>
