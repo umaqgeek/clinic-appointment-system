@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 15, 2019 at 08:30 PM
+-- Generation Time: Jul 16, 2019 at 05:56 PM
 -- Server version: 5.7.26-0ubuntu0.18.10.1
 -- PHP Version: 7.2.17-0ubuntu0.18.10.1
 
@@ -32,6 +32,7 @@ CREATE TABLE `bookings` (
   `b_datetime` datetime NOT NULL,
   `b_status` enum('pending','queue','consult','reject') DEFAULT 'pending',
   `b_status_datetime` datetime DEFAULT NULL,
+  `b_payment_status` enum('pending','paid') NOT NULL,
   `doctor_id` int(11) DEFAULT '0',
   `clinic_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
