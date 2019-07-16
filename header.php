@@ -4,6 +4,7 @@
 <script src="<?=BASE_URL ?>/assets/js/bootstrap.js"></script>
 
 <link rel="icon" href="<?=BASE_URL ?>/assets/images/icon01.png">
+<title>CAS</title>
 
 <div class="container" style="padding-top: 2%;">
   <div class="row">
