@@ -1,7 +1,7 @@
 <?php 
-require("base_config.php");
-require(BASE_DOC."/header.php"); 
-session_destroy();
+require("../base_config.php");
+require(BASE_DOC."/header.php");
+require("user_validator.php");
 ?>
 
 <div class="container" style="padding-top: 1%;">
@@ -9,46 +9,37 @@ session_destroy();
         <div class="col-md-10 offset-1 card-body">
             <center>
                 
-                <h3>Patient Registration</h3>
+                <?php require("nav_items.php"); ?>
                 
-                <form action="register_process.php" method="POST">
+                <h3>Add Doctor</h3>
+                
+                <form action="add_doctor_process.php" method="POST">
                     <table class="table table-borderless">
                         <tr>
                             <td>Full Name</td>
                             <td>:</td>
                             <td>
-                                <input type="text" name="fullname" class="form-control" placeholder="Type your full name here" />
+                                <input type="text" name="fullname" class="form-control" placeholder="Type doctor full name here" />
                             </td>
                         </tr>
                         <tr>
                             <td>Username</td>
                             <td>:</td>
                             <td>
-                                <input type="text" name="username" class="form-control" placeholder="Type your username here" />
+                                <input type="text" name="username" class="form-control" placeholder="Type doctor username here" />
                             </td>
                         </tr>
                         <tr>
                             <td>New Password</td>
                             <td>:</td>
                             <td>
-                                <input type="password" name="password" class="form-control" placeholder="Type your new password here" />
+                                <input type="password" name="password" class="form-control" placeholder="Type doctor new password here" />
                             </td>
                         </tr>
-<!--                        <tr>
-                            <td>Type</td>
-                            <td>:</td>
-                            <td>
-                                <select name="type" class="form-control">
-                                    <option value="patient">Patient</option>
-                                    <option value="clinic admin">Clinic Admin</option>
-                                    <option value="doctor">Doctor</option>
-                                </select>
-                            </td>
-                        </tr>-->
                         <tr>
                             <td colspan="2"></td>
                             <td>
-                                <button type="button" class="btn btn-dark" onclick="window.location='index.php'">Back</button>
+                                <button type="button" class="btn btn-dark" onclick="window.location='list_doctors.php'">Back</button>
                                 <button type="submit" class="btn btn-success">Submit</button>
                                 <button type="reset" class="btn btn-primary">Reset</button>
                             </td>

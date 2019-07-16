@@ -24,21 +24,21 @@ $num_rows = mysqli_num_rows($result);
                             <td>Full Name</td>
                             <td>:</td>
                             <td>
-                                <input type="text" name="fullname" class="form-control" placeholder="Type your full name here" />
+                                <input type="text" name="fullname" class="form-control" placeholder="Type clinic admin full name here" />
                             </td>
                         </tr>
                         <tr>
                             <td>Username</td>
                             <td>:</td>
                             <td>
-                                <input type="text" name="username" class="form-control" placeholder="Type your username here" />
+                                <input type="text" name="username" class="form-control" placeholder="Type clinic admin username here" />
                             </td>
                         </tr>
                         <tr>
                             <td>New Password</td>
                             <td>:</td>
                             <td>
-                                <input type="password" name="password" class="form-control" placeholder="Type your new password here" />
+                                <input type="password" name="password" class="form-control" placeholder="Type clinic admin new password here" />
                             </td>
                         </tr>
                         <tr>

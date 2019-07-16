@@ -5,7 +5,7 @@ require(BASE_DOC."/header.php");
 $u_fullname = $_POST['fullname'];
 $u_username = $_POST['username'];
 $u_password = $_POST['password'];
-$u_type = $_POST['type'];
+$u_type = 'patient'; //$_POST['type'];
 
 foreach ($_POST as $val) {
     if ($val == "" || $val == null) {

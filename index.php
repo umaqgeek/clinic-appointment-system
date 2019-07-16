@@ -34,7 +34,7 @@ session_destroy();
                                 <button type="reset" class="btn btn-primary">Reset</button>
                                 <br />
                                 <br />
-                                <a href="<?=BASE_URL ?>/register.php">Registration</a>
+                                <a href="<?=BASE_URL ?>/register.php">Patient Registration</a>
                             </td>
                         </tr>
                         <tr>
