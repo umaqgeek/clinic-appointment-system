@@ -46,7 +46,7 @@ $num_rows = mysqli_num_rows($result);
                             <td>
                                 <a href="https://www.google.com/maps/place/<?=$row['c_lat'] ?>,<?=$row['c_lon'] ?>" target="_blank">Open google maps</a>
                             </td>
-                            <td><?=strtoupper($row['c_notes'] | 'n/a') ?></td>
+                            <td><?=($row['c_notes']!=""&&$row['c_notes']!=null?strtoupper($row['c_notes']):'N/A') ?></td>
                             <td>
                                 <a href="remove_clinic_process.php?id=<?=$row['c_id'] ?>">
                                     <button type="button" class="btn btn-danger">X</button>

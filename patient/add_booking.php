@@ -42,7 +42,7 @@ $num_rows = mysqli_num_rows($result);
                                 <a href="https://www.google.com/maps/place/<?=$row['c_lat'] ?>,<?=$row['c_lon'] ?>" target="_blank">
                                     <?=strtoupper($row['c_name']) ?>
                                 </a>
-                                <br />(<?=($row['c_notes'] | 'n/a') ?>)
+                                <br />(<?=($row['c_notes']!=""&&$row['c_notes']!=null?($row['c_notes']):'n/a') ?>)
                             </td>
                             <td>
                                 <a href="add_booking_process.php?id=<?=$row['c_id'] ?>">
