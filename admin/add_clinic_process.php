@@ -15,6 +15,8 @@ $c_lat = $_POST['clat'];
 $c_lon = $_POST['clon'];
 $c_notes = $_POST['cnotes'];
 $user_id = $_POST['uid'];
+$c_address = $_POST['caddress'];
+$c_logo = $_FILES['clogo'];
 
 $sql = "INSERT INTO clinics(c_name, c_lat, c_lon, c_notes) VALUES('$c_name', '$c_lat', '$c_lon', '$c_notes')";
 

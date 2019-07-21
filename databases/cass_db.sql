@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 16, 2019 at 05:56 PM
+-- Generation Time: Jul 21, 2019 at 11:12 PM
 -- Server version: 5.7.26-0ubuntu0.18.10.1
--- PHP Version: 7.2.17-0ubuntu0.18.10.1
+-- PHP Version: 7.2.19-0ubuntu0.18.10.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -46,9 +46,11 @@ CREATE TABLE `bookings` (
 CREATE TABLE `clinics` (
   `c_id` int(11) NOT NULL,
   `c_name` text NOT NULL,
-  `c_lat` varchar(200) NOT NULL,
-  `c_lon` varchar(200) NOT NULL,
-  `c_notes` text
+  `c_address` text NOT NULL,
+  `c_lat` varchar(200) DEFAULT NULL,
+  `c_lon` varchar(200) DEFAULT NULL,
+  `c_notes` text,
+  `c_logo` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

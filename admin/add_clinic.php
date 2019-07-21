@@ -13,7 +13,7 @@ require("user_validator.php");
                 
                 <h3>Add Clinic</h3>
                 
-                <form action="add_clinic_process.php" method="POST">
+                <form action="add_clinic_process.php" method="POST" enctype="multipart/form-data">
                     <table class="table table-borderless">
                         <tr>
                             <td>Clinic Name</td>
@@ -23,10 +23,24 @@ require("user_validator.php");
                             </td>
                         </tr>
                         <tr>
+                            <td>Logo / Image</td>
+                            <td>:</td>
+                            <td>
+                                <input type="file" name="clogo" class="img-thumbnail" placeholder="Upload the clinic logo here" />
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Notes / Specialities</td>
                             <td>:</td>
                             <td>
                                 <textarea name="cnotes" class="form-control" placeholder="Type the clinic notes or its specialities here"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>:</td>
+                            <td>
+                                <textarea name="caddress" class="form-control" placeholder="Type the clinic address here"></textarea>
                             </td>
                         </tr>
                         <tr>
