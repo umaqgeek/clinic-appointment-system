@@ -14,6 +14,7 @@ foreach ($_POST as $val) {
 
 $sql = "SELECT * FROM users u 
         LEFT JOIN clinics_users cu ON cu.user_id = u.u_id 
+        LEFT JOIN clinics c ON c.c_id = cu.clinic_id 
         WHERE u.u_username = '$u_username' AND u.u_password = '$u_password'";
 $result = mysqli_query($conn, $sql);
 

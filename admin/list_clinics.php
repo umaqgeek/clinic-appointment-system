@@ -33,7 +33,7 @@ $num_rows = mysqli_num_rows($result);
                         <tr>
                             <td><strong>NO.</strong></td>
                             <td><strong>NAME</strong></td>
-                            <td><strong>LOCATION</strong></td>
+                            <td width="40%"><strong>LOCATION ADDRESS</strong></td>
                             <td><strong>NOTES</strong></td>
                             <td><strong>ACTION</strong></td>
                         </tr>
@@ -42,13 +42,19 @@ $num_rows = mysqli_num_rows($result);
                         <?php if (mysqli_num_rows($result) > 0) { for ($i = 1; $row = mysqli_fetch_assoc($result); $i++) { ?>
                         <tr>
                             <td><?=$i ?>.</td>
-                            <td><?=strtoupper($row['c_name']) ?></td>
+                            <td><?=strtoupper($row['c_name']) ?>
+                                <br />
+                                <a href="<?=$row['c_logo'] ?>" target="_blank">
+                                    <img src="<?=$row['c_logo'] ?>" class="img-thumbnail" style="max-height: 100px; max-width: 100px; margin-top: 10px;" />
+                                </a>
+                            </td>
                             <td>
                                 <a href="https://www.google.com/maps/place/<?=$row['c_lat'] ?>,<?=$row['c_lon'] ?>" target="_blank">Open google maps</a>
+                                <?=($row['c_address']!=""&&$row['c_address']!=null?'<br />'.strtoupper($row['c_address']):'') ?>
                             </td>
                             <td><?=($row['c_notes']!=""&&$row['c_notes']!=null?strtoupper($row['c_notes']):'N/A') ?></td>
                             <td>
-                                <a href="remove_clinic_process.php?id=<?=$row['c_id'] ?>">
+                                <a onclick="return confirm('Are you sure want to delete this?')" href="remove_clinic_process.php?id=<?=$row['c_id'] ?>">
                                     <button type="button" class="btn btn-danger">X</button>
                                 </a>
                             </td>

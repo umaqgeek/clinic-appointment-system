@@ -57,7 +57,7 @@ $num_rows = mysqli_num_rows($result);
                                     <button type="button" class="btn btn-success">Approve</button>
                                 </a>
                                 <?php } ?>
-                                <a href="remove_user_process.php?id=<?=$row['u_id'] ?>">
+                                <a onclick="return confirm('Are you sure want to delete this?')" href="remove_user_process.php?id=<?=$row['u_id'] ?>">
                                     <button type="button" class="btn btn-danger">X</button>
                                 </a>
                             </td>
