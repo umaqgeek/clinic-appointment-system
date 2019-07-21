@@ -18,7 +18,7 @@ $c_name = $_POST['cname'];
 $c_lat = $_POST['clat'];
 $c_lon = $_POST['clon'];
 $c_notes = $_POST['cnotes'];
-$user_id = $_POST['uid'];
+//$user_id = $_POST['uid'];
 $c_address = $_POST['caddress'];
 $clogo = $_FILES['clogo'];
 
