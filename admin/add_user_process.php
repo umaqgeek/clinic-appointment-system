@@ -3,18 +3,18 @@ require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
 
-$u_fullname = $_POST['fullname'];
-$u_username = $_POST['username'];
-$u_password = $_POST['password'];
-$u_type = 'clinic admin'; //$_POST['type'];
-$c_id = $_POST['cid'];
-
 foreach ($_POST as $val) {
     if ($val == "" || $val == null) {
         header("Location: add_user.php?error=Ops! Do not leave blank");
         die();
     }
 }
+
+$u_fullname = $_POST['fullname'];
+$u_username = $_POST['username'];
+$u_password = $_POST['password'];
+$u_type = 'clinic admin'; //$_POST['type'];
+$c_id = $_POST['cid'];
 
 $u_approved = '1'; //$u_type == 'patient' ? '1' : '0';
 $sql = "INSERT INTO users(u_fullname, u_username, u_password, u_type, u_approved) VALUES('$u_fullname', '$u_username', '$u_password', '$u_type', '$u_approved')";

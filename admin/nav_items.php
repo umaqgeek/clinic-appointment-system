@@ -10,6 +10,7 @@
         [ <a href="index.php">Dashboard</a> ]
         [ <a href="list_clinics.php">Clinics</a> ]
         [ <a href="list_users.php">Clinic Admins</a> ]
+        [ <a href="profile.php">Profile</a> ]
         [ <a href="<?= BASE_URL ?>/logout.php">Log Out</a> ]
     </div>
 </div>

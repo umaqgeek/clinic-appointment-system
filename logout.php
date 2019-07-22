@@ -2,5 +2,6 @@
 require("base_config.php");
 require(BASE_DOC."/header.php");
 session_destroy();
-header("Location: index.php?success=You have log out")
+$msg = isset($_GET['msg']) && !empty($_GET['msg']) ? $_GET['msg'] : 'You have log out';
+header("Location: index.php?success=".$msg)
 ?>
