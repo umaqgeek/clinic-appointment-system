@@ -3,22 +3,16 @@
 $base_dir = __DIR__;
 
 // server protocol
-//$protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
-//$protocol = 'https';
 $protocol = 'http';
 
 // domain name
 $domain = $_SERVER['SERVER_NAME'];
 
 // base url
-//$base_url = 'clinicAppointmentSystemSyera'; 
 $base_url = ''; 
-//$base_doc = preg_replace("!^${doc_root}!", '', $base_dir);
 $base_doc = $base_dir;
 
 // server port
-//$port = $_SERVER['SERVER_PORT'];
-//$port = '443';
 $port = '80';
 $disp_port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port";
 
