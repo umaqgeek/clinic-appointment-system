@@ -22,23 +22,23 @@ require("user_validator.php");
                 <form action="edit_profile_process.php" method="POST">
                     <input name="uid" type="hidden" value="<?=$_SESSION['user']['u_id']; ?>" />
                     <div class="row">
-                        <div class="col-md-2 offset-4"><span class="float-right">Full Name : </span></div>
+                        <div class="col-md-3 offset-3"><span class="float-right">Full Name : </span></div>
                         <div class="col-md-5">
                             <input name="fullname" type="text" value="<?= strtoupper($_SESSION['user']['u_fullname']); ?>" class="form-control" placeholder="Type your full name here" />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 offset-4"><span class="float-right">Username : </span></div>
+                        <div class="col-md-3 offset-3"><span class="float-right">Username : </span></div>
                         <div class="col-md-5">
                             <input name="username" type="text" value="<?=$_SESSION['user']['u_username']; ?>" class="form-control" placeholder="Type your username here" />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 offset-4"><span class="float-right">Account Role : </span></div>
+                        <div class="col-md-3 offset-3"><span class="float-right">Account Role : </span></div>
                         <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?= strtoupper($_SESSION['user']['u_type']); ?></strong></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 offset-4"><span class="float-right">Notes : </span></div>
+                        <div class="col-md-3 offset-3"><span class="float-right">Notes : </span></div>
                         <div class="col-md-5">
                             <textarea name="notes" class="form-control" placeholder="Type your notes / speciality here"><?= strtoupper($_SESSION['user']['u_notes']); ?></textarea>
                         </div>

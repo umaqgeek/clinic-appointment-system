@@ -30,7 +30,7 @@ require("user_validator.php");
                     <div class="row">
                         <div class="col-md-2 offset-4"><span class="float-right">Username : </span></div>
                         <div class="col-md-5">
-                            <input name="username" type="text" value="<?= strtoupper($_SESSION['user']['u_username']); ?>" class="form-control" placeholder="Type your username here" />
+                            <input name="username" type="text" value="<?=$_SESSION['user']['u_username']; ?>" class="form-control" placeholder="Type your username here" />
                         </div>
                     </div>
                     <div class="row">
