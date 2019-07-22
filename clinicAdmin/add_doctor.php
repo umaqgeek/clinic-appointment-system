@@ -23,6 +23,13 @@ require("user_validator.php");
                             </td>
                         </tr>
                         <tr>
+                            <td>Notes / Speciality</td>
+                            <td>:</td>
+                            <td>
+                                <textarea name="notes" class="form-control" placeholder="Describe the doctor's speciality in here" rows="4"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Username</td>
                             <td>:</td>
                             <td>

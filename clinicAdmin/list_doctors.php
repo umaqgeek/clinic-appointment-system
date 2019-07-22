@@ -21,7 +21,7 @@ $num_rows = mysqli_num_rows($result);
 
 <div class="container" style="padding-top: 1%;">
     <div class="row card">
-        <div class="col-md-10 offset-1 card-body">
+        <div class="col-md-12 offset-0 card-body">
             <center>
                 
                 <?php require("nav_items.php"); ?>
@@ -41,12 +41,12 @@ $num_rows = mysqli_num_rows($result);
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <td><strong>NO.</strong></td>
-                            <td><strong>CLINIC</strong></td>
-                            <td><strong>FULL NAME</strong></td>
-                            <td><strong>USERNAME</strong></td>
-                            <td><strong>STATUS</strong></td>
-                            <td><strong>ACTION</strong></td>
+                            <td width='5%'><strong>NO.</strong></td>
+                            <td width='15%'><strong>CLINIC</strong></td>
+                            <td width='30%'><strong>FULL NAME (USERNAME)</strong></td>
+                            <td width='30%'><strong>SPECIALITY / NOTES</strong></td>
+                            <td width='10%'><strong>STATUS</strong></td>
+                            <td width='10%'><strong>ACTION</strong></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,8 +54,8 @@ $num_rows = mysqli_num_rows($result);
                         <tr>
                             <td><?=$i ?>.</td>
                             <td><?=strtoupper($row['c_name']) ?></td>
-                            <td><?=strtoupper($row['u_fullname']) ?></td>
-                            <td><?=strtoupper($row['u_username']) ?></td>
+                            <td><?=strtoupper($row['u_fullname']) ?><br />(username: <?=strtolower($row['u_username']) ?>)</td>
+                            <td><?=$row['u_notes']!=''&&$row['u_notes']!=null?strtoupper($row['u_notes']):'N/A' ?></td>
                             <td><?=($row['u_approved']=="1")?("<span style='color: green;'>APPROVED</span>"):("<span style='color: red;'>PENDING</span>") ?></td>
                             <td>
                                 <?php if ($row['u_approved'] == "0") { ?>
