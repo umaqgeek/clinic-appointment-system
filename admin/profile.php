@@ -25,7 +25,7 @@ require("user_validator.php");
                     <div class="col-md-2 offset-4"><span class="float-right">Password : </span></div>
                     <div class="col-md-5">
                         <strong class="float-left" style="text-align: left;">
-                            <?php for ($i=0; $i<sizeof($_SESSION['user']['u_password']); $i++) { echo "*"; } ?>
+                            <?php for ($i=0; $i<strlen($_SESSION['user']['u_password']); $i++) { echo "*"; } ?>
                         </strong>
                     </div>
                 </div>
