@@ -65,7 +65,7 @@ $num_rows = mysqli_num_rows($result);
                             </td>
                             <td>
                                 <?php if (isset($_GET['error'])) { ?>
-                                <span style="color: red;"><?=$_GET['error'] ?></span>
+                                <span class="alert alert-danger"><?=$_GET['error'] ?></span>
                                 <?php } ?>
                             </td>
                         </tr>

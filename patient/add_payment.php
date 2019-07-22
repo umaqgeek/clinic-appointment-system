@@ -14,7 +14,7 @@ require("user_validator.php");
                 <h3>Add Payments</h3>
                 
                 <?php if (isset($_GET['error'])) { ?>
-                    <span style="color: red;"><?= $_GET['error'] ?></span>
+                    <span class="alert alert-danger"><?= $_GET['error'] ?></span>
                 <?php } ?>
 
             </center>

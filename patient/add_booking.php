@@ -19,7 +19,7 @@ $num_rows = mysqli_num_rows($result);
                 <h3>Book Appointment</h3>
                 
                 <?php if (isset($_GET['error'])) { ?>
-                    <span style="color: red;"><?= $_GET['error'] ?></span>
+                    <span class="alert alert-danger"><?= $_GET['error'] ?></span>
                 <?php } ?>
                 
                 <p class="alert alert-info">

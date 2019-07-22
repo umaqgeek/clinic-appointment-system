@@ -58,7 +58,7 @@ session_destroy();
                             </td>
                             <td>
                                 <?php if (isset($_GET['error'])) { ?>
-                                <span style="color: red;"><?=$_GET['error'] ?></span>
+                                <span class="alert alert-danger"><?=$_GET['error'] ?></span>
                                 <?php } ?>
                             </td>
                         </tr>
