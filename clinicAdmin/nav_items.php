@@ -8,8 +8,10 @@
 <div class="row">
     <div class="col-md-12">
         [ <a href="index.php">Dashboard</a> ]
+        [ <a href="clinic.php">My Clinic</a> ]
         [ <a href="list_doctors.php">Doctors</a> ]
         [ <a href="list_payments.php">Payments</a> ]
+        [ <a href="profile.php">Profile</a> ]
         [ <a href="<?= BASE_URL ?>/logout.php">Log Out</a> ]
     </div>
 </div>

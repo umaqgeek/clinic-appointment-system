@@ -23,8 +23,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         $path2 = explode(".", $path1[sizeof($path1)-1]);
         $public_id = $path2[0];
 
-        $sql = "DELETE FROM clinics WHERE c_id = '$id'";
-        if (mysqli_query($conn, $sql)) {
+        $sql1 = "DELETE FROM clinics WHERE c_id = '$id'";
+        $sql2 = "DELETE FROM clinics_users WHERE clinic_id = '$id'";
+        if (mysqli_query($conn, $sql1) && mysqli_query($conn, $sql2)) {
 
             \Cloudinary\Uploader::destroy("clinic_appointment_system_syera/clinic_logo/".$public_id);
 
