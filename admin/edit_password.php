@@ -17,30 +17,30 @@ require("user_validator.php");
                 
                 <?php require("nav_items.php"); ?>
                 
-                <h3>Edit Profile</h3>
+                <h3>Change Password</h3>
                 
-                <form action="edit_profile_process.php" method="POST">
+                <form action="edit_password_process.php" method="POST">
                     <input name="uid" type="hidden" value="<?=$_SESSION['user']['u_id']; ?>" />
                     <div class="row">
-                        <div class="col-md-2 offset-4"><span class="float-right">Full Name : </span></div>
+                        <div class="col-md-3 offset-3"><span class="float-right">Username : </span></div>
+                        <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?= strtoupper($_SESSION['user']['u_username']); ?></strong></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 offset-3"><span class="float-right">Current Password : </span></div>
                         <div class="col-md-5">
-                            <input name="fullname" type="text" value="<?= strtoupper($_SESSION['user']['u_fullname']); ?>" class="form-control" placeholder="Type your full name here" />
+                            <input name="oldpassword" type="password" class="form-control" placeholder="Type of your current password here" />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 offset-4"><span class="float-right">Username : </span></div>
+                        <div class="col-md-3 offset-3"><span class="float-right">New Password : </span></div>
                         <div class="col-md-5">
-                            <input name="username" type="text" value="<?= strtoupper($_SESSION['user']['u_username']); ?>" class="form-control" placeholder="Type your username here" />
+                            <input name="newpassword" type="password" class="form-control" placeholder="Type of your new password here" />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 offset-4"><span class="float-right">Account Role : </span></div>
-                        <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?= strtoupper($_SESSION['user']['u_type']); ?></strong></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2 offset-4"><span class="float-right">Notes : </span></div>
+                        <div class="col-md-3 offset-3"><span class="float-right">Confirm New Password : </span></div>
                         <div class="col-md-5">
-                            <textarea name="notes" class="form-control" placeholder="Type your notes / speciality here"><?= strtoupper($_SESSION['user']['u_notes']); ?></textarea>
+                            <input name="newpassword2" type="password" class="form-control" placeholder="Type of your new password again here" />
                         </div>
                     </div>
                     <div class="row" style="margin-top: 30px;">
@@ -48,7 +48,6 @@ require("user_validator.php");
                             <button type="button" class="btn btn-dark" onclick="window.location='profile.php'">Back</button>
                             <button type="submit" class="btn btn-primary">Update</button>
                             <button type="reset" class="btn btn-info">Reset</button>
-                            <button type="button" class="btn btn-link" id="btn-clear">Clear</button>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 30px;">
@@ -64,12 +63,3 @@ require("user_validator.php");
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        $("#btn-clear").click(function() {
-            $("input, textarea").val("");
-            $("input[type='text']").first().focus();
-        });
-    });
-</script>
