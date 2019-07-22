@@ -4,7 +4,8 @@ $base_dir = __DIR__;
 
 // server protocol
 //$protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
-$protocol = 'https';
+//$protocol = 'https';
+$protocol = 'http';
 
 // domain name
 $domain = $_SERVER['SERVER_NAME'];
@@ -17,7 +18,8 @@ $base_doc = $base_dir;
 
 // server port
 //$port = $_SERVER['SERVER_PORT'];
-$port = '443';
+//$port = '443';
+$port = '80';
 $disp_port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port";
 
 // put em all together to get the complete base URL
