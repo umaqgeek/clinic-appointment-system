@@ -6,3 +6,6 @@ vendor/
 /vendor/
 vendor
 /vendor
+/base_config.php
+/config/
+/conndb.php
