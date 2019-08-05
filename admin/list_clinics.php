@@ -58,7 +58,7 @@ $num_rows = mysqli_num_rows($result);
                             <td><strong>NO.</strong></td>
                             <td><strong>NAME</strong></td>
                             <td width="40%"><strong>LOCATION ADDRESS</strong></td>
-                            <td><strong>NOTES</strong></td>
+                            <td><strong>SPECIALITIES / NOTES</strong></td>
                             <td><strong>ACTION</strong></td>
                         </tr>
                     </thead>

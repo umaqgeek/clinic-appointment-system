@@ -31,6 +31,7 @@ $num_rows = mysqli_num_rows($result);
                         <tr>
                             <td><strong>NO.</strong></td>
                             <td><strong>CLINIC</strong></td>
+                            <td width="40%"><strong>ADDRESS</strong></td>
                             <td><strong>ACTION</strong></td>
                         </tr>
                     </thead>
@@ -43,9 +44,14 @@ $num_rows = mysqli_num_rows($result);
                                     <?=strtoupper($row['c_name']) ?>
                                 </a>
                                 <br />(<?=($row['c_notes']!=""&&$row['c_notes']!=null?($row['c_notes']):'n/a') ?>)
+                                <br />
+                                <a href="<?=$row['c_logo'] ?>" target="_blank">
+                                    <img src="<?=$row['c_logo'] ?>" class="img-thumbnail" style="max-height: 100px; max-width: 100px; margin-top: 10px;" />
+                                </a>
                             </td>
+                            <td><?=strtoupper($row['c_address']) ?></td>
                             <td>
-                                <a href="add_booking_process.php?id=<?=$row['c_id'] ?>">
+                                <a onclick="return confirm('Are you sure want to choose <?=strtoupper($row['c_name']) ?>')" href="add_booking_process.php?id=<?=$row['c_id'] ?>">
                                     <button type="button" class="btn btn-success">Choose</button>
                                 </a>
                             </td>

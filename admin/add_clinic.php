@@ -30,7 +30,7 @@ require("user_validator.php");
                             </td>
                         </tr>
                         <tr>
-                            <td>Notes / Specialities</td>
+                            <td>Specialities / Notes</td>
                             <td>:</td>
                             <td>
                                 <textarea name="cnotes" class="form-control" placeholder="Type the clinic notes or its specialities here"></textarea>

@@ -4,10 +4,10 @@ require(BASE_DOC."/header.php");
 require("user_validator.php");
 
 $u_id = $_SESSION['user']['u_id'];
-$sql = "SELECT * FROM bookings b "
-        . "LEFT JOIN clinics c ON c.c_id = b.clinic_id "
-        . "LEFT JOIN payments p ON p.booking_id = b.b_id "
-        . "WHERE b.patient_id = '$u_id'";
+$sql = "SELECT * FROM clinics c, bookings b "
+        . "WHERE c.c_id = b.clinic_id "
+        . "AND b.patient_id = '$u_id' "
+        . "GROUP BY b.b_id ";
 $result = mysqli_query($conn, $sql);
 
 $num_rows = mysqli_num_rows($result);
@@ -15,7 +15,7 @@ $num_rows = mysqli_num_rows($result);
 
 <div class="container" style="padding-top: 1%;">
     <div class="row card">
-        <div class="col-md-10 offset-1 card-body">
+        <div class="col-md-12 offset-0 card-body">
             <center>
                 
                 <?php require("nav_items.php"); ?>
@@ -49,10 +49,14 @@ $num_rows = mysqli_num_rows($result);
                             <td><?=$i ?>.</td>
                             <td><?=strtoupper($row['c_name']) ?></td>
                             <td><?=strtoupper($row['b_datetime']) ?></td>
-                            <td><?=strtoupper($row['b_status']) ?></td>
+                            <td><?=strtoupper($row['b_payment_status']) ?></td>
                             <td><?=strtoupper($row['b_status']) ?></td>
                             <td>
-                                
+                                <a href="add_payment.php?booking=<?=$row['b_id'] ?>">
+                                    <button type="button" class="btn btn-success">
+                                        View &amp; Add Payment
+                                    </button>
+                                </a>
                             </td>
                         </tr>
                         <?php }} ?>
