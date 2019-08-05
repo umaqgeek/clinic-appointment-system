@@ -13,7 +13,17 @@ $sql = "SELECT * FROM users u, clinics c, clinics_users cu
                         FROM clinics c, clinics_users cu 
                         WHERE c.c_id = cu.clinic_id 
                         AND cu.user_id = '$u_id' LIMIT 1) 
-        AND u.u_id != '$u_id'";
+        AND u.u_id != '$u_id' ";
+$search = "";
+if (isset($_POST['search']) && !empty($_POST['search'])) {
+    $search = $_POST['search'];
+    $sql .= "AND (UPPER(c.c_name) LIKE UPPER('%$search%') OR "
+            . "UPPER(u.u_fullname) LIKE UPPER('%$search%') OR "
+            . "UPPER(u.u_username) LIKE UPPER('%$search%') OR "
+            . "UPPER(u.u_notes) LIKE UPPER('%$search%') OR "
+            . "(UPPER('APPROVED') LIKE UPPER('%$search%') AND u.u_approved = 1) OR "
+            . "(UPPER('PENDING') LIKE UPPER('%$search%') AND u.u_approved = 0)) ";
+}
 $result = mysqli_query($conn, $sql);
 
 $num_rows = mysqli_num_rows($result);
@@ -37,6 +47,22 @@ $num_rows = mysqli_num_rows($result);
                 <?php if (isset($_GET['success'])) { ?>
                 <span class="alert alert-success"><?= $_GET['success'] ?></span>
                 <?php } ?>
+                
+                <form action="list_doctors.php" method="POST">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td width="5%"><strong>Search</strong></td>
+                            <td width="1%"><strong>:</strong></td>
+                            <td width="30%">
+                                <input type="text" name="search" class="form-control" placeholder="Search here" value="<?=$search ?>" />
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                                <button type="button" onclick="location.href='list_doctors.php'" class="btn btn-dark">Clear</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
                 
                 <table class="table table-bordered">
                     <thead>

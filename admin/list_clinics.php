@@ -3,7 +3,15 @@ require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
 
-$sql = "SELECT * FROM clinics c ORDER BY c.c_name ASC ";
+$sql = "SELECT * FROM clinics c ";
+$search = "";
+if (isset($_POST['search']) && !empty($_POST['search'])) {
+    $search = $_POST['search'];
+    $sql .= "WHERE (UPPER(c.c_name) LIKE UPPER('%$search%') OR "
+            . "UPPER(c.c_address) LIKE UPPER('%$search%') OR "
+            . "UPPER(c.c_notes) LIKE UPPER('%$search%')) ";
+}
+$sql .= "ORDER BY c.c_name ASC ";
 $result = mysqli_query($conn, $sql);
 
 $num_rows = mysqli_num_rows($result);
@@ -27,6 +35,22 @@ $num_rows = mysqli_num_rows($result);
                 <?php if (isset($_GET['success'])) { ?>
                 <span class="alert alert-success"><?= $_GET['success'] ?></span>
                 <?php } ?>
+                
+                <form action="list_clinics.php" method="POST">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td width="5%"><strong>Search</strong></td>
+                            <td width="1%"><strong>:</strong></td>
+                            <td width="30%">
+                                <input type="text" name="search" class="form-control" placeholder="Search here" value="<?=$search ?>" />
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                                <button type="button" onclick="location.href='list_clinics.php'" class="btn btn-dark">Clear</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
                 
                 <table class="table table-bordered">
                     <thead>

@@ -6,8 +6,17 @@ require("user_validator.php");
 $sql = "SELECT * FROM users u "
         . "LEFT JOIN clinics_users cu ON cu.user_id = u.u_id "
         . "LEFT JOIN clinics c ON c.c_id = cu.clinic_id "
-        . "WHERE u.u_type = 'clinic admin' "
-        . "ORDER BY u.u_approved ASC, c.c_name ASC, u.u_fullname ASC";
+        . "WHERE u.u_type = 'clinic admin' ";
+$search = "";
+if (isset($_POST['search']) && !empty($_POST['search'])) {
+    $search = $_POST['search'];
+    $sql .= "AND (UPPER(c.c_name) LIKE UPPER('%$search%') OR "
+            . "UPPER(u.u_fullname) LIKE UPPER('%$search%') OR "
+            . "UPPER(u.u_username) LIKE UPPER('%$search%') OR "
+            . "(UPPER('APPROVED') LIKE UPPER('%$search%') AND u.u_approved = 1) OR "
+            . "(UPPER('PENDING') LIKE UPPER('%$search%') AND u.u_approved = 0)) ";
+}
+$sql .= "ORDER BY u.u_approved ASC, c.c_name ASC, u.u_fullname ASC";
 $result = mysqli_query($conn, $sql);
 
 $num_rows = mysqli_num_rows($result);
@@ -31,6 +40,22 @@ $num_rows = mysqli_num_rows($result);
                 <?php if (isset($_GET['success'])) { ?>
                 <span class="alert alert-success"><?= $_GET['success'] ?></span>
                 <?php } ?>
+                
+                <form action="list_users.php" method="POST">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td width="5%"><strong>Search</strong></td>
+                            <td width="1%"><strong>:</strong></td>
+                            <td width="30%">
+                                <input type="text" name="search" class="form-control" placeholder="Search here" value="<?=$search ?>" />
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                                <button type="button" onclick="location.href='list_users.php'" class="btn btn-dark">Clear</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
                 
                 <table class="table table-bordered">
                     <thead>
