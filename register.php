@@ -34,17 +34,20 @@ session_destroy();
                                 <input type="password" name="password" class="form-control" placeholder="Type your new password here" />
                             </td>
                         </tr>
-<!--                        <tr>
-                            <td>Type</td>
+                        <tr>
+                            <td>Phone No. (Optional)</td>
                             <td>:</td>
                             <td>
-                                <select name="type" class="form-control">
-                                    <option value="patient">Patient</option>
-                                    <option value="clinic admin">Clinic Admin</option>
-                                    <option value="doctor">Doctor</option>
-                                </select>
+                                <input type="text" name="phone" class="form-control" placeholder="Type your phone number here" />
                             </td>
-                        </tr>-->
+                        </tr>
+                        <tr>
+                            <td>Email (Optional)</td>
+                            <td>:</td>
+                            <td>
+                                <input type="text" name="email" class="form-control" placeholder="Type your email address here" />
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="2"></td>
                             <td>

@@ -23,8 +23,23 @@ $num_rows = mysqli_num_rows($result);
                 <?php } ?>
                 
                 <p class="alert alert-info">
-                    Choose which clinic from below list
+                    Choose the appointment date and clinic from below list
                 </p>
+                
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-md-3">Appointment Date</div>
+                    <div class="col-md-1">:</div>
+                    <div class="col-md-4">
+                        <input type="date" id="bdate" class="form-control" value="<?=date('Y-m-d') ?>" />
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-md-3">Appointment Time</div>
+                    <div class="col-md-1">:</div>
+                    <div class="col-md-4">
+                        <input type="time" id="btime" class="form-control" value="<?=date('H:i') ?>" />
+                    </div>
+                </div>
                 
                 <table class="table">
                     <thead>
@@ -51,9 +66,11 @@ $num_rows = mysqli_num_rows($result);
                             </td>
                             <td><?=strtoupper($row['c_address']) ?></td>
                             <td>
-                                <a onclick="return confirm('Are you sure want to choose <?=strtoupper($row['c_name']) ?>')" href="add_booking_process.php?id=<?=$row['c_id'] ?>">
-                                    <button type="button" class="btn btn-success">Choose</button>
-                                </a>
+                                <form action="add_booking_process.php" method="POST" id="form_<?=$i ?>">
+                                    <input type="hidden" name="cid" value="<?=$row['c_id'] ?>" />
+                                    <input type="hidden" name="bdatetime" class="bdatetime" value="" />
+                                    <button type="button" class="btn btn-success btn_i" i="<?=$i ?>">Choose</button>
+                                </form>
                             </td>
                         </tr>
                         <?php }} else { ?>
@@ -70,3 +87,20 @@ $num_rows = mysqli_num_rows($result);
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $(".btn_i").click(function() {
+            var i = $(this).attr('i');
+            var bdate = $("#bdate").val();
+            var btime = $("#btime").val();
+            if (bdate != "" && btime != "") {
+                var bdatetime = bdate + ' ' + btime;
+                $(".bdatetime").val(bdatetime);
+                $("#form_"+i).submit();
+            } else {
+                location.href='add_booking.php?error=Do not leave blank on appointment date and time';
+            }
+        });
+    });
+</script>

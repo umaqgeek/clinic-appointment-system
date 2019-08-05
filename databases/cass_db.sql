@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 21, 2019 at 11:12 PM
+-- Generation Time: Aug 05, 2019 at 10:48 PM
 -- Server version: 5.7.26-0ubuntu0.18.10.1
 -- PHP Version: 7.2.19-0ubuntu0.18.10.1
 
@@ -106,15 +106,17 @@ CREATE TABLE `users` (
   `u_password` varchar(200) NOT NULL DEFAULT 'qwerty',
   `u_type` enum('administrator','clinic admin','doctor','patient') NOT NULL DEFAULT 'patient',
   `u_approved` int(11) NOT NULL DEFAULT '0',
-  `u_notes` text
+  `u_notes` text,
+  `u_phone` varchar(200) DEFAULT NULL,
+  `u_email` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`u_id`, `u_fullname`, `u_username`, `u_password`, `u_type`, `u_approved`, `u_notes`) VALUES
-(1, 'Administrator System', 'admin', 'admin123', 'administrator', 1, 'I am the administrator of this system.');
+INSERT INTO `users` (`u_id`, `u_fullname`, `u_username`, `u_password`, `u_type`, `u_approved`, `u_notes`, `u_phone`, `u_email`) VALUES
+(1, 'Administrator System', 'admin', 'admin123', 'administrator', 1, 'I am the administrator of this system.', '0199737579', 'umaqgeek@gmail.com');
 
 --
 -- Indexes for dumped tables

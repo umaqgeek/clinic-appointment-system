@@ -7,7 +7,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        [ <a href="index.php">Dashboard</a> ]
+        <!--[ <a href="index.php">Dashboard</a> ]-->
         [ <a href="profile.php">Profile</a> ]
         [ <a href="<?= BASE_URL ?>/logout.php">Log Out</a> ]
     </div>

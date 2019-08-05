@@ -2,6 +2,9 @@
 require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
+
+header("Location: appointment.php");
+die();
 ?>
 
 <div class="container" style="padding-top: 1%;">

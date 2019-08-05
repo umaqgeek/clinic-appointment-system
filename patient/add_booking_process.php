@@ -3,11 +3,17 @@ require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
 
-if (isset($_GET['id']) && !empty($_GET['id'])) {
+if (isset($_POST['cid']) && !empty($_POST['cid'])) {
     
-    $c_id = $_GET['id'];
+    $b_datetime = $_POST['bdatetime'];
+    if ($b_datetime == "") {
+        header("Location: add_booking.php?error=Do not leave blank on appointment date");
+        die();
+    }
+    
+    $c_id = $_POST['cid'];
     $patient_id = $_SESSION['user']['u_id'];
-    $b_datetime = date('Y-m-d H:i:s');
+//    $b_datetime = date('Y-m-d H:i:s');
     $b_status = 'pending';
     $b_payment_status = 'pending';
     $b_status_datetime = $b_datetime;
@@ -23,4 +29,5 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 } else {
     header("Location: add_booking.php?error=Undefined clinic id");
 }
+die();
 ?>
