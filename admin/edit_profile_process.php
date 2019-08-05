@@ -16,9 +16,22 @@ $u_username = $_POST['username'];
 $u_notes = $_POST['notes'];
 
 $sql = "UPDATE users u SET u.u_fullname = '$u_fullname', u.u_username = '$u_username', u.u_notes = '$u_notes' WHERE u.u_id = '$u_id'";
-
 if (mysqli_query($conn, $sql)) {
-    header("Location: ../logout.php?msg=Success change your profile. Please login again");
+    $sql = "SELECT * FROM users u 
+        LEFT JOIN clinics_users cu ON cu.user_id = u.u_id 
+        LEFT JOIN clinics c ON c.c_id = cu.clinic_id 
+        WHERE u.u_id = '$u_id'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        if ($row = mysqli_fetch_assoc($result)) {
+            $_SESSION['user'] = $row;
+            header("Location: profile.php?success=Success change your profile");
+        } else {
+            header("Location: edit_profile.php?error=Ops. No data with that ID");
+        }
+    } else {
+        header("Location: edit_profile.php?error=Ops. No data with that ID");
+    }
 } else {
     header("Location: edit_profile.php?error=Ops. Error: ".mysqli_error($conn));
 }

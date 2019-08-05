@@ -47,6 +47,13 @@ require("user_validator.php");
                         </a>
                     </div>
                 </div>
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-md-12">
+                        <?php if (isset($_GET['success'])) { ?>
+                            <span class="alert alert-success"><?= $_GET['success'] ?></span>
+                        <?php } ?>
+                    </div>
+                </div>
                 
             </center>
         </div>
