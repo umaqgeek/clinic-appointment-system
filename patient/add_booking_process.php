@@ -13,10 +13,9 @@ if (isset($_POST['cid']) && !empty($_POST['cid'])) {
     
     $c_id = $_POST['cid'];
     $patient_id = $_SESSION['user']['u_id'];
-//    $b_datetime = date('Y-m-d H:i:s');
     $b_status = 'pending';
     $b_payment_status = 'pending';
-    $b_status_datetime = $b_datetime;
+    $b_status_datetime = date('Y-m-d H:i:s');
     
     $sql = "INSERT INTO bookings(patient_id, b_datetime, b_status, b_status_datetime, b_payment_status, clinic_id) "
             . "VALUES('$patient_id', '$b_datetime', '$b_status', '$b_status_datetime', '$b_payment_status', '$c_id')";

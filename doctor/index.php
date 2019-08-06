@@ -3,7 +3,7 @@ require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
 
-header("Location: profile.php");
+header("Location: queue.php");
 die();
 ?>
 

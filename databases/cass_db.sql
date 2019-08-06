@@ -30,7 +30,7 @@ CREATE TABLE `bookings` (
   `b_id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
   `b_datetime` datetime NOT NULL,
-  `b_status` enum('pending','queue','consult','reject') DEFAULT 'pending',
+  `b_status` enum('pending','queue','consult','reject','done') DEFAULT 'pending',
   `b_status_datetime` datetime DEFAULT NULL,
   `b_payment_status` enum('pending','paid') NOT NULL,
   `doctor_id` int(11) DEFAULT '0',

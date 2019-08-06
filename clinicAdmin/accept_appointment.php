@@ -5,8 +5,11 @@ require("user_validator.php");
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $b_id = $_GET['id'];
-    
-    $sql = "UPDATE bookings SET b_status = 'queue' WHERE b_id = '$b_id'";
+    $b_status_datetime = date('Y-m-d H:i:s');
+    $sql = "UPDATE bookings "
+            . "SET b_status = 'queue' "
+            . ", b_status_datetime = '$b_status_datetime' "
+            . "WHERE b_id = '$b_id' ";
     if (mysqli_query($conn, $sql)) {
         header("Location: view_appointment.php?id=$b_id");
     } else {
