@@ -53,15 +53,11 @@ $num_rows = mysqli_num_rows($result);
                             <td><?=strtoupper($row['b_status']) ?></td>
                             <td>
                                 <a href="add_payment.php?booking=<?=$row['b_id'] ?>">
-                                    <button type="button" class="btn btn-success">
-                                        View &amp; Add Payment
-                                    </button>
+                                    <button type="button" class="btn btn-success">View &amp; Add Payment</button>
                                 </a>
                                 <?php if (strtoupper($row['b_payment_status']) != 'PAID') { ?>
                                 <a onclick="return confirm('Are you sure want to remove this booking?')" href="remove_appointment.php?id=<?=$row['b_id'] ?>">
-                                    <button type="button" class="btn btn-danger">
-                                        Cancel
-                                    </button>
+                                    <button type="button" class="btn btn-danger">Cancel</button>
                                 </a>
                                 <?php } ?>
                             </td>
