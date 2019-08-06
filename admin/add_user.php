@@ -46,10 +46,25 @@ $num_rows = mysqli_num_rows($result);
                             <td>:</td>
                             <td>
                                 <select name="cid" class="form-control">
+                                    <option value="">-- Select clinic --</option>
                                     <?php if (mysqli_num_rows($result) > 0) { for ($i = 1; $row = mysqli_fetch_assoc($result); $i++) { ?>
                                     <option value="<?=$row['c_id'] ?>"><?=strtoupper($row['c_name']) ?></option>
                                     <?php }} ?>
                                 </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Phone No. (Optional)</td>
+                            <td>:</td>
+                            <td>
+                                <input type="text" name="phone" class="form-control" placeholder="Type your phone number here" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email (Optional)</td>
+                            <td>:</td>
+                            <td>
+                                <input type="text" name="email" class="form-control" placeholder="Type your email address here" />
                             </td>
                         </tr>
                         <tr>

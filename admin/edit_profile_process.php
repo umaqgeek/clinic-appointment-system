@@ -4,7 +4,7 @@ require(BASE_DOC."/header.php");
 require("user_validator.php");
 
 foreach ($_POST as $key => $val) {
-    if (($val == "" || $val == null) && $key != 'notes') {
+    if (($val == "" || $val == null) && $key != 'notes' && $key != 'phone' && $key != 'email') {
         header("Location: edit_profile.php?error=Ops! Do not leave blank");
         die();
     }
@@ -14,8 +14,16 @@ $u_id = $_POST['uid'];
 $u_fullname = $_POST['fullname'];
 $u_username = $_POST['username'];
 $u_notes = $_POST['notes'];
+$u_phone = $_POST['phone'];
+$u_email = $_POST['email'];
 
-$sql = "UPDATE users u SET u.u_fullname = '$u_fullname', u.u_username = '$u_username', u.u_notes = '$u_notes' WHERE u.u_id = '$u_id'";
+$sql = "UPDATE users u "
+        . "SET u.u_fullname = '$u_fullname', "
+        . "u.u_username = '$u_username', "
+        . "u.u_phone= '$u_phone', "
+        . "u.u_email = '$u_email', "
+        . "u.u_notes = '$u_notes' "
+        . "WHERE u.u_id = '$u_id'";
 if (mysqli_query($conn, $sql)) {
     $sql = "SELECT * FROM users u 
         LEFT JOIN clinics_users cu ON cu.user_id = u.u_id 

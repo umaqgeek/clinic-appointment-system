@@ -34,6 +34,14 @@ require("user_validator.php");
                     <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtoupper($_SESSION['user']['u_type']); ?></strong></div>
                 </div>
                 <div class="row">
+                    <div class="col-md-3 offset-3"><span class="float-right">Phone No. : </span></div>
+                    <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtoupper($_SESSION['user']['u_phone']); ?></strong></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 offset-3"><span class="float-right">Email Address : </span></div>
+                    <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtolower($_SESSION['user']['u_email']); ?></strong></div>
+                </div>
+                <div class="row">
                     <div class="col-md-3 offset-3"><span class="float-right">Major / Speciality : </span></div>
                     <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtoupper($_SESSION['user']['u_notes']); ?></strong></div>
                 </div>

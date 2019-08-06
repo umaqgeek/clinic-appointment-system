@@ -34,6 +34,18 @@ require("user_validator.php");
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-2 offset-4"><span class="float-right">Phone No. (Optional) : </span></div>
+                        <div class="col-md-5">
+                            <input name="phone" type="text" value="<?=$_SESSION['user']['u_phone']; ?>" class="form-control" placeholder="Type your phone number here" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 offset-4"><span class="float-right">Email Address (Optional) : </span></div>
+                        <div class="col-md-5">
+                            <input name="email" type="text" value="<?=$_SESSION['user']['u_email']; ?>" class="form-control" placeholder="Type your email address here" />
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-3 offset-3"><span class="float-right">Account Role : </span></div>
                         <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?= strtoupper($_SESSION['user']['u_type']); ?></strong></div>
                     </div>

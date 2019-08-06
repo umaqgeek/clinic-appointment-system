@@ -44,6 +44,20 @@ require("user_validator.php");
                             </td>
                         </tr>
                         <tr>
+                            <td>Phone No. (Optional)</td>
+                            <td>:</td>
+                            <td>
+                                <input type="text" name="phone" class="form-control" placeholder="Type doctor phone number here" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email (Optional)</td>
+                            <td>:</td>
+                            <td>
+                                <input type="text" name="email" class="form-control" placeholder="Type doctor email address here" />
+                            </td>
+                        </tr>
+                        <tr>
                             <td colspan="2"></td>
                             <td>
                                 <button type="button" class="btn btn-dark" onclick="window.location='list_doctors.php'">Back</button>
