@@ -9,8 +9,9 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 }
 
 $booking_id = $_GET['id'];
-$sql = "SELECT * FROM bookings b, clinics c "
+$sql = "SELECT * FROM bookings b, clinics c, users u "
         . "WHERE b.clinic_id = c.c_id "
+        . "AND b.patient_id = u.u_id "
         . "AND b.b_id = '$booking_id'";
 $result = mysqli_query($conn, $sql);
 $num_rows = mysqli_num_rows($result);
@@ -61,34 +62,35 @@ $totalPayments = 0.00;
                     <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtoupper($row['b_payment_status']); ?></strong></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3 offset-3"><span class="float-right">Last Update : </span></div>
-                    <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=$row['b_status_datetime']; ?></strong></div>
+                    <div class="col-md-3 offset-3"><span class="float-right">Full Name : </span></div>
+                    <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtoupper($row['u_fullname']); ?></strong></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3 offset-3"><span class="float-right">Clinic Name : </span></div>
-                    <div class="col-md-5">
-                        <strong class="float-left" style="text-align: left;">
-                            <?=strtoupper($row['c_name']); ?>
-                            <br />
-                            <a href="<?= $row['c_logo'] ?>" target="_blank">
-                                <img src="<?= $row['c_logo'] ?>" class="img-thumbnail" style="max-height: 100px; max-width: 100px; margin-top: 10px;" />
-                            </a>
-                        </strong>
+                    <div class="col-md-3 offset-3"><span class="float-right">Username : </span></div>
+                    <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtoupper($row['u_username']); ?></strong></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 offset-3"><span class="float-right">Phone No. : </span></div>
+                    <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtoupper($row['u_phone']); ?></strong></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 offset-3"><span class="float-right">Email Address : </span></div>
+                    <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtolower($row['u_email']); ?></strong></div>
+                </div>
+                
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-12">
+                        <?php if (strtoupper($row['b_status']) == 'PENDING') { ?>
+                        <?php if (strtoupper($row['b_payment_status']) == 'PAID') { ?>
+                        <a onclick="return confirm('Are you sure want to proceed this appointment to doctor\'s queue?')" href="accept_appointment.php?id=<?=$row['b_id'] ?>">
+                            <button type="button" class="btn btn-success">Proceed to Queue</button>
+                        </a>
+                        <?php } ?>
+                        <a onclick="return confirm('Are you sure want to decline this appointment?')" href="remove_appointment.php?id=<?=$row['b_id'] ?>">
+                            <button type="button" class="btn btn-danger">Decline</button>
+                        </a>
+                        <?php } ?>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 offset-3"><span class="float-right">Clinic Address : </span></div>
-                    <div class="col-md-5">
-                        <strong class="float-left" style="text-align: left;">
-                            <a href="https://www.google.com/maps/place/<?=$row['c_lat'] ?>,<?=$row['c_lon'] ?>" target="_blank">
-                                <?=strtoupper($row['c_address']); ?>
-                            </a>
-                        </strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 offset-3"><span class="float-right">Specialities / Notes : </span></div>
-                    <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtoupper($row['c_notes']); ?></strong></div>
                 </div>
                 
                 <hr />
