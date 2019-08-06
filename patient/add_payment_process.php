@@ -24,6 +24,15 @@ $purl = $_FILES['purl'];
 $p_price = $_POST['pprice'];
 $p_datetime = date('Y-m-d H:i:s');
 
+if ($purl['error'] != 0) {
+    header("Location: add_payment.php?booking=$booking_id&error=Ops! Please upload something");
+    die();
+}
+if (!is_numeric($p_price)) {
+    header("Location: add_payment.php?booking=$booking_id&error=Ops! Invalid format for the paid price");
+    die();
+}
+
 $imageFileType = $purl['type'];
 $fileType = explode("/", $imageFileType);
 
@@ -41,15 +50,15 @@ if (isset($results['secure_url']) && !empty($results['secure_url'])) {
         $sql = "UPDATE bookings SET b_payment_status = 'paid' WHERE b_id = '$booking_id'";
         if (mysqli_query($conn, $sql)) {
             
-            header("Location: appointment.php?success=Success booking for the appointment");
+            header("Location: add_payment.php?booking=$booking_id&success=Success booking for the appointment");
         } else {
-            header("Location: add_payment.php?error=Ops. Error: " . mysqli_error($conn));
+            header("Location: add_payment.php?booking=$booking_id&error=Ops. Error: " . mysqli_error($conn));
         }
     } else {
-        header("Location: add_payment.php?error=Ops. Error: " . mysqli_error($conn));
+        header("Location: add_payment.php?booking=$booking_id&error=Ops. Error: " . mysqli_error($conn));
     }
 } else {
-    header("Location: add_payment.php?error=Ops. Something wrong with the files server");
+    header("Location: add_payment.php?booking=$booking_id&error=Ops. Something wrong with the files server");
 }
 die();
 ?>

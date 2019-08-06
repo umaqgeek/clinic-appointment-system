@@ -3,9 +3,11 @@ require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
 
+$current_cid = $_SESSION['user']['c_id'];
 $sql = "SELECT * FROM clinics c, bookings b, users u "
         . "WHERE c.c_id = b.clinic_id "
         . "AND b.patient_id = u.u_id "
+        . "AND c.c_id = '$current_cid' "
         . "GROUP BY b.b_id ";
 $result = mysqli_query($conn, $sql);
 
@@ -46,7 +48,8 @@ $num_rows = mysqli_num_rows($result);
                             <td><?=strtoupper($row['b_datetime']) ?></td>
                             <td>
                                 <?=strtoupper($row['u_fullname']) ?><br />
-                                <?=strtoupper($row['u_phone']) ?>
+                                <?=strtoupper($row['u_phone']) ?><br />
+                                <?=strtolower($row['u_email']) ?><br />
                             </td>
                             <td><?=strtoupper($row['b_payment_status']) ?></td>
                             <td><?=strtoupper($row['b_status']) ?></td>

@@ -35,7 +35,15 @@ $totalPayments = 0.00;
                 
                 <?php require("nav_items.php"); ?>
                 
-                <h3>Booking Detail</h3>
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="appointment.php" class="left">
+                            <button type="button" class="btn btn-dark left">Back</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <h3>Appointment Detail</h3>
                 <div class="row">
                     <div class="col-md-3 offset-3"><span class="float-right">Booking ID : </span></div>
                     <div class="col-md-5"><strong class="float-left" style="text-align: left;">BOOK-<?=$row['b_id']; ?></strong></div>
@@ -100,7 +108,7 @@ $totalPayments = 0.00;
                             <td>Paid Price (RM)</td>
                             <td>:</td>
                             <td>
-                                <input type="number" name="pprice" class="form-control" placeholder="Type the paid price here. Eg.: 10.00" />
+                                <input type="text" name="pprice" class="form-control" placeholder="Type the paid price here. Eg.: 10.00" />
                             </td>
                         </tr>
                         <tr>
@@ -115,6 +123,9 @@ $totalPayments = 0.00;
                 
                 <?php if (isset($_GET['error'])) { ?>
                     <span class="alert alert-danger"><?= $_GET['error'] ?></span>
+                <?php } ?>
+                <?php if (isset($_GET['success'])) { ?>
+                    <span class="alert alert-success"><?= $_GET['success'] ?></span>
                 <?php } ?>
                     
                 <table class="table table-bordered">
@@ -145,7 +156,7 @@ $totalPayments = 0.00;
                             </td>
                             <td><?=$rowPayments['p_datetime'] ?></td>
                             <td>
-                                <a onclick="return confirm('Are you sure want to remove this payment?')" href="remove_payment_process.php">
+                                <a onclick="return confirm('Are you sure want to remove this payment?')" href="remove_payment_process.php?id=<?=$rowPayments['p_id'] ?>">
                                     <button type="button" class="btn btn-danger">X</button>
                                 </a>
                             </td>
