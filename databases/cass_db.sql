@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 05, 2019 at 10:48 PM
+-- Generation Time: Nov 08, 2019 at 12:33 AM
 -- Server version: 5.7.26-0ubuntu0.18.10.1
 -- PHP Version: 7.2.19-0ubuntu0.18.10.1
 
@@ -88,6 +88,7 @@ CREATE TABLE `payments` (
 CREATE TABLE `reviews` (
   `r_id` int(11) NOT NULL,
   `r_comment` text,
+  `r_rating` int(11) NOT NULL DEFAULT '1',
   `user_id` int(11) NOT NULL,
   `r_datetime` datetime NOT NULL,
   `clinic_id` int(11) NOT NULL

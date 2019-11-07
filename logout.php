@@ -1,4 +1,5 @@
-<?php 
+<?php
+unset($_SESSION['user']);
 require("base_config.php");
 require(BASE_DOC."/header.php");
 session_destroy();

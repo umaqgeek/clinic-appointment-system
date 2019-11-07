@@ -1,5 +1,5 @@
-<?php 
-require(BASE_DOC . "/conndb.php"); 
+<?php
+require(BASE_DOC . "/conndb.php");
 
 if (isset($_SESSION['user'])) {
     // always fetch latest user data from db.
@@ -8,9 +8,9 @@ if (isset($_SESSION['user'])) {
         die();
     }
     $user_u_id = $_SESSION['user']['u_id'];
-    $sql_user = "SELECT * FROM users u 
-                LEFT JOIN clinics_users cu ON cu.user_id = u.u_id 
-                LEFT JOIN clinics c ON c.c_id = cu.clinic_id 
+    $sql_user = "SELECT * FROM users u
+                LEFT JOIN clinics_users cu ON cu.user_id = u.u_id
+                LEFT JOIN clinics c ON c.c_id = cu.clinic_id
                 WHERE u.u_id = '$user_u_id'";
     $result_user = mysqli_query($conn, $sql_user);
     $t_user = mysqli_num_rows($result_user);

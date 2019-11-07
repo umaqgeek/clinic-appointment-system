@@ -1,4 +1,4 @@
-<?php 
+<?php
 require("../base_config.php");
 require(BASE_DOC."/header.php");
 require("user_validator.php");
@@ -33,9 +33,9 @@ $totalPayments = 0.00;
     <div class="row card">
         <div class="col-md-10 offset-1 card-body">
             <center>
-                
+
                 <?php require("nav_items.php"); ?>
-                
+
                 <div class="row">
                     <div class="col-md-2">
                         <a href="list_appointments.php" class="left">
@@ -43,7 +43,7 @@ $totalPayments = 0.00;
                         </a>
                     </div>
                 </div>
-                
+
                 <h3>Appointment Detail</h3>
                 <div class="row">
                     <div class="col-md-3 offset-3"><span class="float-right">Booking ID : </span></div>
@@ -56,10 +56,6 @@ $totalPayments = 0.00;
                 <div class="row">
                     <div class="col-md-3 offset-3"><span class="float-right">Booking Status : </span></div>
                     <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtoupper($row['b_status']); ?></strong></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 offset-3"><span class="float-right">Payment Status : </span></div>
-                    <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtoupper($row['b_payment_status']); ?></strong></div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 offset-3"><span class="float-right">Full Name : </span></div>
@@ -77,7 +73,7 @@ $totalPayments = 0.00;
                     <div class="col-md-3 offset-3"><span class="float-right">Email Address : </span></div>
                     <div class="col-md-5"><strong class="float-left" style="text-align: left;"><?=strtolower($row['u_email']); ?></strong></div>
                 </div>
-                
+
                 <div class="row" style="margin-top: 20px;">
                     <div class="col-md-12">
                         <?php if (strtoupper($row['b_status']) == 'PENDING') { ?>
@@ -92,51 +88,10 @@ $totalPayments = 0.00;
                         <?php } ?>
                     </div>
                 </div>
-                
-                <hr />
-                
-                <h3>List of Payments</h3>                    
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <td><strong>NO.</strong></td>
-                            <td><strong>RECEIPTS / INVOICES</strong></td>
-                            <td><strong>PRICE (RM)</strong></td>
-                            <td><strong>PAYMENT DATE</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if ($numRowsPayments > 0) { for ($i = 1; $rowPayments = mysqli_fetch_assoc($resultPayments); $i++) { ?>
-                        <tr>
-                            <td><?=$i ?>.</td>
-                            <td>
-                                <a href="<?=$rowPayments['p_url'] ?>" target="_blank">
-                                    VIEW RECEIPT / INVOICE
-                                </a>
-                            </td>
-                            <td>
-                                <?php
-                                $p_price = floatval($rowPayments['p_price']);
-                                echo number_format($p_price, 2);
-                                $totalPayments += $p_price;
-                                ?>
-                            </td>
-                            <td><?=$rowPayments['p_datetime'] ?></td>
-                        </tr>
-                        <?php }} else { ?>
-                        <tr><td colspan="4"><center><i>.. No Data ..</i></center></td></tr>
-                        <?php } ?>
-                        <tr>
-                            <td colspan="2" align="center"><strong>TOTAL PAID</strong></td>
-                            <td><strong><?=number_format($totalPayments, 2) ?></strong></td>
-                            <td colspan="2"></td>
-                        </tr>
-                    </tbody>
-                </table>
 
             </center>
         </div>
     </div>
-    
+
     <div style="margin-top: 100px;"></div>
 </div>
