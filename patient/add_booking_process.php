@@ -10,6 +10,13 @@ if (isset($_POST['cid']) && !empty($_POST['cid'])) {
         header("Location: add_booking.php?error=Do not leave blank on appointment date");
         die();
     }
+    $todaytime = strtotime(date('Y-m-d H:i:s'));
+    $chosentime = strtotime($b_datetime);
+    $difftime = $chosentime - $todaytime;
+    if ($difftime <= 60) {
+        header("Location: add_booking.php?error=Appointment date and time should be at least 1 hour ahead");
+        die();
+    }
 
     $c_id = $_POST['cid'];
     $patient_id = $_SESSION['user']['u_id'];
